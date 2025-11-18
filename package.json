@@ -1,6 +1,6 @@
 {
   "name": "vanilla-timezone-validation",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A lightweight, zero-dependency, and tree-shakable library for validating IANA timezone strings, including non-canonical names.",
   "author": "Roman Kozodoi",
   "license": "MIT",
