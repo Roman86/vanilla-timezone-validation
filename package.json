@@ -1,7 +1,7 @@
 {
   "name": "vanilla-timezone-validation",
   "version": "1.0.3",
-  "description": "A lightweight, zero-dependency, and tree-shakable library for validating IANA timezone strings, including non-canonical names.",
+  "description": "A lightweight, zero-dependency, and tree-shakable library for validating IANA timezone strings via the native Intl API, including non-canonical (link) names.",
   "author": "Roman Kozodoi",
   "license": "MIT",
   "repository": {
@@ -19,9 +19,14 @@
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     }
   },
   "files": [
@@ -29,6 +34,9 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "scripts": {
     "prepublishOnly": "git diff --quiet && git diff --staged --quiet && npm run lint && npm run test && npm run build",
@@ -38,27 +46,25 @@
     "format": "biome format --write ./src"
   },
   "keywords": [
-    "IANA timezone",
-    "IANA timezone database",
-    "tz database",
-    "timezone validation",
-    "canonical timezone names",
-    "non-canonical timezone names",
-    "data validation",
-    "JavaScript",
-    "TypeScript",
-    "date-time handling"
+    "timezone",
+    "timezones",
+    "timezone-validation",
+    "iana",
+    "tz",
+    "tzdata",
+    "intl",
+    "validation",
+    "type-guard",
+    "canonical-timezone",
+    "zero-dependency",
+    "datetime"
   ],
   "devDependencies": {
-    "@biomejs/biome": "latest",
+    "@biomejs/biome": "^2.3.4",
     "@types/jest": "^29.5.12",
     "jest": "^29.7.0",
     "ts-jest": "^29.2.3",
     "tsup": "^8.5.0",
     "typescript": "^5.9.3"
-  },
-  "overrides": {
-    "js-yaml": "^4.1.1",
-    "glob": "^11.1.0"
   }
 }
